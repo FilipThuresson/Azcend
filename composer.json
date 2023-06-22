@@ -1,0 +1,21 @@
+{
+  "name": "filip/azcend",
+  "description": "Blazing fast MVC for php",
+  "authors": [
+    {
+      "name": "Filip Thuresson",
+      "email": "filip.tthuresson@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Azcend\\": "src/"
+    },
+    "classmap": [
+      "/"
+    ]
+  },
+  "require": {
+    "guzzlehttp/guzzle": "^7.7"
+  }
+}
