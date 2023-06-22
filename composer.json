@@ -1,6 +1,7 @@
 {
   "name": "filip/azcend",
   "description": "Blazing fast MVC for php",
+  "version": "0.1",
   "authors": [
     {
       "name": "Filip Thuresson",
