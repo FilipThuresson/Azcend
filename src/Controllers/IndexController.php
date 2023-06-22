@@ -12,7 +12,7 @@ class IndexController extends BaseController
             "name" => "Filip Thuresson",
         ];
 
-        $this->view('index');
+        $this->view('index', 'index');
     }
 
 }
