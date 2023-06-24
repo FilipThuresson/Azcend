@@ -17,8 +17,6 @@ class IndexController extends BaseController
         ];
 
         $this->view('index.index');
-
-        //$this->view('info', '');
     }
 
 }
