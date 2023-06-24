@@ -17,6 +17,7 @@
     ]
   },
   "require": {
-    "guzzlehttp/guzzle": "^7.7"
+    "doctrine/orm": "^2.7",
+    "ext-pdo": "*"
   }
 }

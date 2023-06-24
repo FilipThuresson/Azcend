@@ -1,7 +1,7 @@
 version: '3'
 
 networks:
-    laravel:
+    azcend:
 
 services:
     nginx:
@@ -16,7 +16,7 @@ services:
             - php
             - mysql
         networks:
-            - laravel
+            - azcend
 
     mysql:
         image: mysql:5.7.22
@@ -35,7 +35,7 @@ services:
             SERVICE_TAG: dev
             SERVICE_NAME: mysql
         networks:
-            - laravel
+            - azcend
 
     php:
         build:
@@ -45,6 +45,18 @@ services:
         volumes:
             - ./:/var/www/html
         ports:
-            - "9000:9000"
+            - "19000:19000"
         networks:
-            - laravel
+            - azcend
+
+    phpmyadmin:
+        image: phpmyadmin/phpmyadmin
+        links:
+            - mysql
+        environment:
+            PMA_HOST: mysql
+            PMA_PORT: 3306
+            PMA_ARBITRARY: 1
+        restart: always
+        ports:
+            - 8081:80

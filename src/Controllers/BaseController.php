@@ -6,13 +6,24 @@ namespace Azcend\Controllers;
 abstract class BaseController{
 
     public array $variables;
-    public function view($view_file, $folder) {
+    public function view($view_file) {
 
-        extract($this->variables, EXTR_PREFIX_SAME, "wddx");
+        extract($this->variables, EXTR_PREFIX_SAME, "");
 
+        $paths = explode('.', $view_file);
+        $file_path = '';
 
-        if(file_exists(__DIR__ . '/../Views/' . $folder . '/' .$view_file.'.php')) {
-            include(__DIR__ . '/../Views/' . $folder . '/' .$view_file.'.php');
+        foreach ($paths as $idx=>$path) {
+            if ($idx === count($paths) -1) {
+                $file_path .= $path . '.php';
+            }
+            else {
+                $file_path .= $path . '/';
+            }
+        }
+
+        if(file_exists(__DIR__ . '/../Views/' . $file_path)) {
+            include(__DIR__ . '/../Views/' . $file_path);
         } else {
             include(__DIR__ . '/../Views/errors/404.html');
         }

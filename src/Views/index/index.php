@@ -8,7 +8,6 @@
     <title><?php echo $title; ?></title>
 </head>
 <body>
-    <h1><?php echo $name; ?></h1>
-
+    <h1><?php var_dump($tablename[0]['name']); ?></h1>
 </body>
 </html>
