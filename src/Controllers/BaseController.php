@@ -5,7 +5,7 @@ namespace Azcend\Controllers;
 
 abstract class BaseController{
 
-    public array $variables;
+    public array $variables = [];
     public function view($view_file) {
 
         extract($this->variables, EXTR_PREFIX_SAME, "");
@@ -29,4 +29,12 @@ abstract class BaseController{
         }
     }
 
+
+    public function set($key, $value) {
+        $this->variables[$key] = $value;
+    }
+
+    public function get($key) {
+        return $this->variables[$key];
+    }
 }

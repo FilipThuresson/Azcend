@@ -3,18 +3,14 @@
 namespace Azcend\Controllers;
 
 use Azcend\Models\User;
+
 class IndexController extends BaseController
 {
-    public function index() {
-
-        $user = new User();
-        $user->find(1);
-
-        $this->variables = [
-            "title" => "Home page",
-            "name" => "Filip Thuresson",
-            "tablename" => $user->data,
-        ];
+    public function index(): void
+    {
+        $userModel = new User();
+        $users = $userModel->find(1);
+        $this->set('users', $users);
 
         $this->view('index.index');
     }

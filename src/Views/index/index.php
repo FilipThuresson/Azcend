@@ -5,9 +5,10 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title><?php echo $title; ?></title>
+    <link rel="stylesheet" href="css/index.css">
+    <title>Welcome to Azcend</title>
 </head>
 <body>
-    <h1><?php var_dump($tablename[0]['name']); ?></h1>
+    <h1>Welcome <?php echo $users->name ?></h1>
 </body>
 </html>
