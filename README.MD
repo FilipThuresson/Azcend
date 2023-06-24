@@ -56,3 +56,10 @@ you would pass write the following command:
 ```php 
     $this->view('index.index');
 ```
+To create a controller class run the script in the app.php file:
+```
+php app.php create:controller controllername
+```
+The controller will be namned controllernameController and will have and index method thats render a view in 
+`views/controllername/index.php`
+
