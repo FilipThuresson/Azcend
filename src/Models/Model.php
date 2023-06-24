@@ -21,9 +21,9 @@ class Model
     public function find($id) {
         $this->data = $this->db->query(
             "SELECT * FROM {$this->table} WHERE id = {$id}"
-        )->fetchAll();
+        )->fetchObject();
 
-        //return $this->data;
+        return $this->data;
     }
 
 }

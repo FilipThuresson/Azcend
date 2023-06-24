@@ -14,13 +14,6 @@ class Database
     private $conn;
 
     public function __construct() {
-        /*
-        $this->host = getenv('MYSQL_HOST');
-        $this->username = getenv('MYSQL_USER');
-        $this->password = getenv('MYSQL_PASSWORD');
-        $this->db_name = getenv('MYSQL_DATABASE');
-
-        */
         $this->conn = new PDO("mysql:host=". $this->host .";dbname=". $this->db_name, $this->username, $this->password);
     }
 

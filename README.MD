@@ -1,8 +1,6 @@
 # Azcend
 
 Azcend is a mvc framework created in php 8.2. Azcend is **in pre alpha**  
-Azcend is not meant to host any real projects. Feel free to star or fork this project
-
 To get started have php 8.2 and composer installed. Docker is also required.
 
 To set up the project run:
@@ -29,29 +27,32 @@ The folder structure of the framework:
 
 ````
 .
-└── Root/
-    ├── public/
-    │   ├── .htaccess
-    │   └── index.php
-    ├── src/
-    │   ├── Controllers/
-    │   │   ├── Basecontroller.php
-    │   │   └── IndexController.php
-    │   └── Views/
-    │       ├── errors/
-    │       │   └── 404.html
-    │       └── index/
-    │           └── index.php
-    ├── .env
-    ├── docker-compose.yml
-    └── Dockerfile
+├── public/
+│   ├── .htaccess
+│   └── index.php
+├── src/
+│   ├── App/
+│   │   └── Database.php
+│   ├── Controllers/
+│   │   ├── Basecontroller.php
+│   │   └── IndexController.php
+│   ├── Views/
+│   │   ├── errors/
+│   │   │   └── 404.html
+│   │   └── index/
+│   │       └── index.php
+│   └── Models/
+│       └── Model.php
+├── .env
+├── docker-compose.yml
+└── Dockerfile
 ````
 
 ## Controllers
 
 Controllers extends BaseController with has the important functions to make a page.   
-To show a view the $this->view(file, folder). So to render index.php in the index/ views folder
+To show a view the $this->view(filepath). So to render index.php in the index/ views folder
 you would pass write the following command:
 ```php 
-    $this->view('index', 'index');
+    $this->view('index.index');
 ```
