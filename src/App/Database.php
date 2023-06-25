@@ -26,6 +26,11 @@ class Database
         return $this->conn->query($sql);
     }
 
+    public function insert($sql, $data) {
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute($data);
+        return $stmt->fetchAll();
+    }
     public function close() {
         $this->conn = null;
     }

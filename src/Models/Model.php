@@ -14,20 +14,18 @@ class Model
 
 
 
-    public function __construct()
-    {
+    public function __construct($id = null) {
         $this->db = new Database();
         $path = explode('\\', get_class($this));
         $this->table = array_pop($path) . 's';
 
         $this->indexies = $this->db->query("DESCRIBE {$this->table}")->fetchAll(\PDO::FETCH_COLUMN);
-    }
 
-    public function find($id) {
-        $this->data = $this->db->query(
-            "SELECT * FROM {$this->table} WHERE id = {$id}"
-        )->fetch();
-        return $this->data;
+        if (!is_null($id)) {
+            $this->data = $this->db->query(
+                "SELECT * FROM {$this->table} WHERE id = {$id}"
+            )->fetch();
+        }
     }
 
     public function set($key, $value) {
@@ -35,7 +33,7 @@ class Model
     }
 
     public function get($key) {
-        $this->data[$key];
+        return $this->data[$key];
     }
 
     public function save() {
