@@ -9,6 +9,6 @@
     <title>Welcome to Azcend</title>
 </head>
 <body>
-    <h1>Welcome <?php echo $users->name ?></h1>
+    <h1>Welcome To Azcend</h1>
 </body>
 </html>
