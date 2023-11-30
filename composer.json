@@ -11,10 +11,7 @@
   "autoload": {
     "psr-4": {
       "Azcend\\": "src/"
-    },
-    "classmap": [
-      "/"
-    ]
+    }
   },
   "require": {
     "doctrine/orm": "^2.7",

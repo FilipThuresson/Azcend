@@ -17,7 +17,9 @@ class Model
     public function __construct($id = null) {
         $this->db = new Database();
         $path = explode('\\', get_class($this));
-        $this->table = array_pop($path) . 's';
+
+        if (!isset($this->table))
+            $this->table = array_pop($path) . 's';
 
         $this->indexies = $this->db->query("DESCRIBE {$this->table}")->fetchAll(\PDO::FETCH_COLUMN);
 
