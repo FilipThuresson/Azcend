@@ -8,7 +8,6 @@ class IndexController extends BaseController
 {
     public function index(): void
     {
-        Migration::migrate();
         $this->view('index.index');
     }
 }

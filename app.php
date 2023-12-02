@@ -1,9 +1,13 @@
 <?php
 
+require 'vendor/autoload.php';
 require 'src/App/controllerTemplate.php';
 require 'src/App/Migration.php';
+$_ENV = parse_ini_file('.env');
+chdir(__DIR__);
 
 $cmd = explode(':', $argv[1]);
+
 
 switch ($cmd[0]) {
     case 'create':
