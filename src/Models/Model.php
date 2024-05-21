@@ -2,45 +2,90 @@
 
 namespace Azcend\Models;
 
-use Azcend\App\Database;
+use PDO;
 
-class Model
-{
-    private $db;
-    public $indexies;
-    public $table;
+class Model {
+    protected $table;
+    protected $primaryKey = 'id';
+    protected $attributes = [];
+    protected $dirtyAttributes = [];
 
-    public $data;
+    protected $connection;
 
+    public function __construct($table, $primaryKey = 'id', $id = null) {
+        $this->table = $table;
+        $this->primaryKey = $primaryKey;
+        $this->connection = (new \Azcend\App\Database())->getConn();
 
-
-    public function __construct($id = null) {
-        $this->db = new Database();
-        $path = explode('\\', get_class($this));
-
-        if (!isset($this->table))
-            $this->table = array_pop($path) . 's';
-
-        $this->indexies = $this->db->query("DESCRIBE {$this->table}")->fetchAll(\PDO::FETCH_COLUMN);
-
-        if (!is_null($id)) {
-            $this->data = $this->db->query(
-                "SELECT * FROM {$this->table} WHERE id = {$id}"
-            )->fetch();
+        if ($id !== null) {
+            $this->find($id);
         }
     }
 
-    public function set($key, $value) {
-        $this->data[$key] = $value;
+    public function __set($name, $value) {
+        $this->attributes[$name] = $value;
+        $this->dirtyAttributes[$name] = $value;
     }
 
-    public function get($key) {
-        return $this->data[$key];
+    public function __get($name) {
+        return $this->attributes[$name] ?? null;
     }
 
     public function save() {
-        $indexies = implode(', ', $this->indexies);
-        $values = implode('\', \'', $this->data);
-        $this->db->query("INSERT INTO {$this->table} ({$indexies}) VALUES (null, '{$values}')");
+        if (isset($this->attributes[$this->primaryKey])) {
+            $this->update();
+        } else {
+            $this->insert();
+        }
+    }
+
+    protected function insert() {
+        $columns = implode(", ", array_keys($this->dirtyAttributes));
+        $placeholders = implode(", ", array_fill(0, count($this->dirtyAttributes), '?'));
+        $values = array_values($this->dirtyAttributes);
+
+        $sql = "INSERT INTO {$this->table} ($columns) VALUES ($placeholders)";
+        $stmt = $this->getConnection()->prepare($sql);
+        $stmt->execute($values);
+
+        $this->attributes[$this->primaryKey] = $this->getConnection()->lastInsertId();
+        $this->dirtyAttributes = [];
+    }
+
+    protected function update() {
+        $setClause = [];
+        $values = [];
+        foreach ($this->dirtyAttributes as $column => $value) {
+            $setClause[] = "$column = ?";
+            $values[] = $value;
+        }
+        $values[] = $this->attributes[$this->primaryKey];
+
+        $setClause = implode(", ", $setClause);
+        $sql = "UPDATE {$this->table} SET $setClause WHERE {$this->primaryKey} = ?";
+        $stmt = $this->getConnection()->prepare($sql);
+        $stmt->execute($values);
+
+        $this->dirtyAttributes = [];
+    }
+
+    protected function find($id) {
+        $sql = "SELECT * FROM {$this->table} WHERE {$this->primaryKey} = ?";
+        $stmt = $this->getConnection()->prepare($sql);
+        $stmt->execute([$id]);
+
+        $record = $stmt->fetch(PDO::FETCH_ASSOC);
+        if ($record) {
+            $this->attributes = $record;
+            $this->dirtyAttributes = [];
+        }
+    }
+
+    protected function getConnection() {
+        return $this->connection;
+    }
+
+    public function isDirty() {
+        return !empty($this->dirtyAttributes);
     }
 }

@@ -31,6 +31,11 @@ class Database
         $stmt->execute($data);
         return $stmt->fetchAll();
     }
+
+    public function getConn(): PDO
+    {
+        return $this->conn;
+    }
     public function close() {
         $this->conn = null;
     }

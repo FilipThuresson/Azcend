@@ -27,7 +27,7 @@ switch ($cmd[0]) {
                 $name = \Azcend\App\Migration::new($argv[2]);
 
                 if($name) {
-                    echo "INFO> Created Migration: " . $name;
+                    echo "INFO> Created Migration: " . $name . "\n";
                 }
         }
         break;
