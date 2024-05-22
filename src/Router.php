@@ -43,7 +43,7 @@ class Router
 
         //Let's create some defaults if the parts are not set
         $controller = !empty($controllerPart) ?
-            'Azcend\\Controllers\\'.$controllerPart.'Controller' :
+            'Azcend\\Controllers\\'.ucfirst($controllerPart).'Controller' :
             'Azcend\\Controllers\IndexController';
 
         $method = !empty($methodPart) ?
