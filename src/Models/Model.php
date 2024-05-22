@@ -12,8 +12,13 @@ class Model {
 
     protected $connection;
 
-    public function __construct($table, $primaryKey = 'id', $id = null) {
-        $this->table = $table;
+    public function __construct($table = null, $primaryKey = 'id', $id = null) {
+
+        if (empty($table)){
+            $path = explode('\\', get_class($this));
+            $this->table = strtolower(array_pop($path) . 's');
+        }
+
         $this->primaryKey = $primaryKey;
         $this->connection = (new \Azcend\App\Database())->getConn();
 
