@@ -3,6 +3,8 @@
 
 namespace Azcend\Controllers;
 
+use Azcend\Core\GenerateErrorFile;
+
 abstract class BaseController{
 
     public array $variables = [];
@@ -25,7 +27,8 @@ abstract class BaseController{
         if(file_exists(__DIR__ . '/../Views/' . $file_path)) {
             include(__DIR__ . '/../Views/' . $file_path);
         } else {
-            include(__DIR__ . '/../Views/errors/404.html');
+            echo GenerateErrorFile::run(404);
+            die();
         }
     }
 
