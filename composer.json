@@ -23,7 +23,6 @@
     }
   ],
   "require": {
-    "doctrine/orm": "^2.7",
     "ext-pdo": "*",
     "azcend/core": "@dev"
   }
