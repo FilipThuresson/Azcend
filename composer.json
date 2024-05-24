@@ -13,17 +13,8 @@
       "Azcend\\": "src/"
     }
   },
-  "repositories": [
-    {
-      "type": "path",
-      "url": "./packages/azcend/core/",
-      "options": {
-        "symlink": true
-      }
-    }
-  ],
   "require": {
     "ext-pdo": "*",
-    "azcend/core": "@dev"
+    "azcend/core": "^1.0"
   }
 }

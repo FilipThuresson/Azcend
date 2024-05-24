@@ -4,15 +4,21 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e18f37f16f328f1f85f2e6b53f9a53f1",
+    "content-hash": "3459c8c2c16b68bf105d6d5dab2f96ec",
     "packages": [
         {
             "name": "azcend/core",
             "version": "1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/FilipThuresson/AzcendCore.git",
+                "reference": "7792bc330e6469a5adb958455af277e8df542c09"
+            },
             "dist": {
-                "type": "path",
-                "url": "./packages/azcend/core",
-                "reference": "08f7805a2c91017b59f871f925d92f1e2845fb8d"
+                "type": "zip",
+                "url": "https://api.github.com/repos/FilipThuresson/AzcendCore/zipball/7792bc330e6469a5adb958455af277e8df542c09",
+                "reference": "7792bc330e6469a5adb958455af277e8df542c09",
+                "shasum": ""
             },
             "require": {
                 "ext-pdo": "*",
@@ -24,19 +30,19 @@
                     "Azcend\\Core\\": "src/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "description": "Core package for Azcend MVC",
-            "transport-options": {
-                "symlink": true,
-                "relative": true
-            }
+            "support": {
+                "issues": "https://github.com/FilipThuresson/AzcendCore/issues",
+                "source": "https://github.com/FilipThuresson/AzcendCore/tree/v1.0.0"
+            },
+            "time": "2024-05-24T21:31:57+00:00"
         }
     ],
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "azcend/core": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
