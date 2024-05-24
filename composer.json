@@ -13,8 +13,18 @@
       "Azcend\\": "src/"
     }
   },
+  "repositories": [
+    {
+      "type": "path",
+      "url": "./packages/azcend/core/",
+      "options": {
+        "symlink": true
+      }
+    }
+  ],
   "require": {
     "doctrine/orm": "^2.7",
-    "ext-pdo": "*"
+    "ext-pdo": "*",
+    "azcend/core": "@dev"
   }
 }
