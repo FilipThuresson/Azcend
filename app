@@ -1,8 +1,6 @@
 <?php
 
 require 'vendor/autoload.php';
-require 'src/App/controllerTemplate.php';
-require 'src/App/Migration.php';
 $_ENV = parse_ini_file('.env');
 chdir(__DIR__);
 
@@ -13,8 +11,8 @@ switch ($cmd[0]) {
     case 'create':
         switch ($cmd[1]) {
             case 'controller':
-                $file = fopen('src/Controllers/' . $argv[2] . 'Controller.php', 'w');
-                $txt = create_controller($argv[2]);
+                $file = fopen('src/Controllers/' . ucfirst($argv[2]) . 'Controller.php', 'w');
+                $txt = Azcend\Core\GenerateFile::create_controller(ucfirst($argv[2]));
                 fwrite($file, $txt);
                 fclose($file);
                 break;
@@ -24,7 +22,7 @@ switch ($cmd[0]) {
                     break;
                 }
 
-                $name = \Azcend\App\Migration::new($argv[2]);
+                $name = \Azcend\Database\Migration::new($argv[2]);
 
                 if($name) {
                     echo "INFO> Created Migration: " . $name . "\n";
@@ -32,7 +30,7 @@ switch ($cmd[0]) {
         }
         break;
     case 'migrate':
-        \Azcend\App\Migration::migrate();
+        \Azcend\Database\Migration::migrate();
         break;
     default:
     {

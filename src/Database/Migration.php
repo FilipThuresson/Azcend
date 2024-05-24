@@ -1,7 +1,8 @@
 <?php
 
-namespace Azcend\App;
+namespace Azcend\Database;
 
+use Azcend\Core\Database;
 use Exception;
 
 class Migration
@@ -9,7 +10,7 @@ class Migration
     static function migrate(): void
     {
         echo "INFO> Migrating tables\n";
-        $dir = __DIR__ . '/../Migrations';
+        $dir = __DIR__ . '/Migrations';
         if(!scandir($dir)) {
             echo "ERROR> Error while scanning ". $dir ." directory";
             return;
@@ -48,7 +49,7 @@ class Migration
         foreach ($files as $file) {
             $fileName = $file;
             echo "INFO> Migrating file ". $fileName;
-            $path = __DIR__ . "/../Migrations/". $file;
+            $path = __DIR__ . "/Migrations/" . $file;
             $file = fopen($path, 'r');
             $sql = fread($file, filesize($path));
 
@@ -63,7 +64,7 @@ class Migration
     {
         $prefix = date('Y-m-d-H-s');
         $fileName = $prefix . '-' . $name . '.sql';
-        $file = fopen('src/Migrations/' . $fileName, 'w');
+        $file = fopen('src/Database/Migrations/' . $fileName, 'w');
         fclose($file);
         return $fileName;
     }

@@ -1,7 +1,8 @@
 <?php
 
 namespace Azcend;
-use Azcend\controllers\IndexController;
+
+use Azcend\Core\GenerateErrorFile;
 
 class Router
 {
@@ -63,6 +64,7 @@ class Router
 
     private static function error(int $code): void
     {
-        include_once ("Views/errors/{$code}.html");
+        echo GenerateErrorFile::run(404);
+        die();
     }
 }
