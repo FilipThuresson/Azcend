@@ -8,6 +8,17 @@ use Azcend\Core\GenerateErrorFile;
 abstract class BaseController{
 
     public array $variables = [];
+    protected array $middlewares = [];
+
+
+    public function __construct() {
+        //* execute all middleware registered on route,
+
+        foreach ($this->middlewares as $middleware){
+            $middleware::run($_REQUEST, $_SERVER['REQUEST_URI']);
+        }
+    }
+
     public function view($view_file) {
 
         extract($this->variables, EXTR_PREFIX_SAME, "");
@@ -39,5 +50,15 @@ abstract class BaseController{
 
     public function get($key) {
         return $this->variables[$key];
+    }
+
+    /*
+     *  Used for registering middleware
+     */
+    protected function register(...$classes)
+    {
+        foreach ($classes as $class) {
+            $this->middlewares[] = $class;
+        }
     }
 }
