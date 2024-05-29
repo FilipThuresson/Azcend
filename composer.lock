@@ -4,21 +4,15 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3459c8c2c16b68bf105d6d5dab2f96ec",
+    "content-hash": "ea634acc5d429de8500ac6480919ede5",
     "packages": [
         {
             "name": "azcend/core",
-            "version": "1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/FilipThuresson/AzcendCore.git",
-                "reference": "7792bc330e6469a5adb958455af277e8df542c09"
-            },
+            "version": "1.0.0",
             "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/FilipThuresson/AzcendCore/zipball/7792bc330e6469a5adb958455af277e8df542c09",
-                "reference": "7792bc330e6469a5adb958455af277e8df542c09",
-                "shasum": ""
+                "type": "path",
+                "url": "./packages/azcend/core",
+                "reference": "4ba373b710a11e1fb2bf549a08102c78f0925702"
             },
             "require": {
                 "ext-pdo": "*",
@@ -30,19 +24,22 @@
                     "Azcend\\Core\\": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
             "description": "Core package for Azcend MVC",
-            "support": {
-                "issues": "https://github.com/FilipThuresson/AzcendCore/issues",
-                "source": "https://github.com/FilipThuresson/AzcendCore/tree/v1.0.0"
-            },
-            "time": "2024-05-24T21:31:57+00:00"
+            "transport-options": {
+                "symlink": true,
+                "relative": true
+            }
         }
     ],
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "azcend/core": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

@@ -50,15 +50,3 @@ services:
             - "19000:19000"
         networks:
             - azcend
-
-    phpmyadmin:
-        image: phpmyadmin/phpmyadmin
-        links:
-            - mysql
-        environment:
-            PMA_HOST: mysql
-            PMA_PORT: 3306
-            PMA_ARBITRARY: 1
-        restart: always
-        ports:
-            - 8081:80
