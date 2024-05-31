@@ -4,15 +4,15 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ea634acc5d429de8500ac6480919ede5",
+    "content-hash": "8da292a579a53f7db8f5147b41a08411",
     "packages": [
         {
             "name": "azcend/core",
-            "version": "1.0.0",
+            "version": "1.0.1",
             "dist": {
                 "type": "path",
                 "url": "./packages/azcend/core",
-                "reference": "4ba373b710a11e1fb2bf549a08102c78f0925702"
+                "reference": "3a88892639366887a7b704aa2e9483898a1b1800"
             },
             "require": {
                 "ext-pdo": "*",

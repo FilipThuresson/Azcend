@@ -15,15 +15,6 @@
   },
   "require": {
     "ext-pdo": "*",
-    "azcend/core": "@dev"
-  },
-  "repositories": [
-    {
-      "type": "path",
-      "url": "./packages/azcend/core",
-      "options": {
-        "symlink": true
-      }
-    }
-  ]
+    "azcend/core": "^1.0"
+  }
 }
